@@ -3,7 +3,6 @@ Project Akhir PBO -  “Rush Rectangle”
 - Amelia Agustina Nainggolan - 2117051080 (B)
 
 "Skenario Game"
-    
     Rush Rectangle adalah sebuah game sederhana yang familiar. Konsep permainan adalah player harus menghindari Enemy yang berada di area permainan. Player dapat bergerak ke kanan dan ke kiri menggunakan keyboard Arrow kanan dan kiri. Musuh akan bergerak dengan kecepatan yang random/acak. Jika player dapat menghindari musuh maka score akan bertambah 1 secara terus menerus. Jika player tidak dapat menghindari musuh, maka player akan kalah dan game berakhir.
 
 Link Github : https://github.com/ameliaagstn/ProjectGame-PBO.git 
