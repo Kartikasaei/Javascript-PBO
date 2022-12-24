@@ -95,3 +95,164 @@ let _line = {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//pemain
+let pemain = {
+  x: 400,
+  sp: 10,
+  y: 500,
+  width: 40,
+  height: 55,
+  draw: function (){
+    noStroke ();
+    fill ("BLUE");
+    rect (this.x, this.y, this.width, this.height);
+    fill ("#e5b9d6");
+    rect (this.x+5, this.y+10, this.width-10, this.height-20);
+    textSize (10);
+    fill(0);
+    text ('YOU', this.x, this.y+23, this.width, this.height);
+  },
+  
+  //untuk menggerakkan pemain
+  move: function move(){
+      //panah kanan ke kanan (di dalam jalan)
+    if ((keyIsPressed) && (keyCode === RIGHT_ARROW) && (this.x + this.width !== width -150)){
+      this.x += this.sp;
+    }
+    //panah kiri gerak ke kiri (di dalam jalan)
+    if ((keyIsPressed) && (keyCode === LEFT_ARROW) && (this.x !== 150)){
+      this.x -= this.sp;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//menggerakkan musuh
+function moveRect (){
+    //spawn random
+  if (musuh1.y <= 0){
+    musuh1.sp = random (5, 15)
+    musuh1.x = random (155,410);
+    //warna random
+    musuh1.col[1] = random (255);
+    musuh1.col[2] = random (255);
+
+  }
+  if (musuh2.y <= 0){
+    musuh2.sp = random (5, 15)
+    musuh2.x = random (155,410);
+    musuh2.col[1] = random (255);
+    musuh2.col[2] = random (255);
+
+  }
+  
+  if (musuh1.y === 0 || musuh2.y === 0 ){
+      score++;
+  } 
+
+  //untuk menjalankan & menampilkan player
+  pemain.move();
+  musuh1.draw();
+  musuh1.move();
+  musuh2.draw();
+  musuh2.move();
+
+  //tabrakan
+  let collide = collideCar (pemain.x, pemain.y, pemain.width, pemain.height, musuh1.x, musuh1.y, musuh1.width, musuh1.height);
+  //jika tabrakan akan mengembalikan fungsi stop
+  if (collide){
+    stop();
+  }
+  
+  let collide2 = collideCar (pemain.x, pemain.y, pemain.width, pemain.height, musuh2.x, musuh2.y, musuh2.width, musuh2.height);
+  if (collide2){
+    stop ();
+  }
+}
+
+function collide (x, y, width, height, x2, y2, width2, height2) {
+  //kondisi collide
+  //sisi berhadapan ketemu = game over
+  if (x + width >= x2 &&    
+      x <= x2 + width2 &&    
+      y + height >= y2 &&   
+      y <= y2 + height2) {    
+      return true;
+    }
+}
+
+
